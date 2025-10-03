@@ -1,0 +1,805 @@
+:root {
+  --iceberg: #d8e2e9;
+  --japanese-indigo: #2c3e50;
+  --flax: #e9d985;
+  --gamboge: #e09f3e;
+  --dark-brown: #5d4037;
+  --light-blue: #90caf9;
+  --moonstone: #4db6ac;
+  --saffron: #f4d03f;
+  --gunmetal: #2c3e50;
+  --phohloay: #52779c;
+  /* Bronze colors for 3D effect */
+  --bronze-dark: #8c7853;
+  --bronze-medium: #b8945e;
+  --bronze-light: #d4af37;
+  --bronze-highlight: #f4d03f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--japanese-indigo);
+  color: var(--iceberg);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Sticky Header */
+header {
+  position: sticky;
+  top: 0;
+  /* background-color: var(--gunmetal); */
+  background: linear-gradient(to right, var(--gunmetal), #395067);
+  color: transparent;
+  box-shadow: 0 0 15px rgba(244, 208, 63, 0.4);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.605); */
+  border-bottom: 1px solid var(--moonstone);
+}
+
+.img {
+  width: 3.5rem;
+  border-radius: 1.8rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(
+    to right,
+    var(--bronze-light),
+    var(--bronze-highlight)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(244, 208, 63, 0.3);
+}
+
+.logo i {
+  font-size: 2rem;
+  color: var(--moonstone);
+  filter: drop-shadow(0 0 5px rgba(77, 182, 172, 0.5));
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+nav a {
+  color: var(--iceberg);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  position: relative;
+}
+
+nav a:hover {
+  color: var(--gamboge);
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--japanese-indigo), var(--flax));
+  transition: all 0.3s;
+  transform: translateX(-50%);
+}
+
+nav a:hover::after {
+  width: 80%;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-image: url(../pics/van.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 2;
+  max-width: 800px;
+  padding: 3rem;
+  background: rgba(44, 62, 80, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(77, 182, 172, 0.2);
+  position: relative;
+}
+
+.hero-content::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    var(--moonstone),
+    var(--saffron),
+    var(--moonstone)
+  );
+  border-radius: 22px;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+.hero h2 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(to right, var(--saffron), var(--flax));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 15px rgba(244, 208, 63, 0.4);
+}
+
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: 2.5rem;
+  color: var(--iceberg);
+  line-height: 1.8;
+}
+
+.cta-button {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gamboge), var(--saffron));
+  color: var(--gunmetal);
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: all 0.4s;
+  box-shadow: 0 5px 15px rgba(224, 159, 62, 0.4),
+    0 0 0 1px rgba(224, 159, 62, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(224, 159, 62, 0.6),
+    0 0 0 1px rgba(224, 159, 62, 0.3);
+}
+
+.cta-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: all 0.6s;
+}
+
+.cta-button:hover::after {
+  left: 100%;
+}
+
+/* Renamed keyframe to avoid conflict with cloud 'float' */
+@keyframes float-orb {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+/* Weather Animation (Clouds, for Features section background) */
+.weather-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Clouds are behind content */
+}
+
+/* CSS Cloud Styling */
+.cloud {
+  position: absolute;
+  background: white; /* Base cloud color */
+  border-radius: 100px; /* Highly rounded corners for a soft look */
+  opacity: 0.9;
+  /* Uniform speed for all clouds (120 seconds to cross the screen) */
+  animation: float 120s infinite linear;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle lift effect */
+}
+
+/* Cloud Bumps using pseudo-elements */
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  background: white;
+  border-radius: 50%; /* Perfect circles for bumps */
+}
+
+/* First bump (::before) */
+.cloud::before {
+  width: 60%;
+  height: 100%;
+  top: -50%;
+  left: 20%;
+}
+
+/* Second bump (::after) */
+.cloud::after {
+  width: 40%;
+  height: 70%;
+  top: -40%;
+  right: 10%;
+}
+
+/* Individual Cloud Sizes and Positions (ALL DELAYS REMOVED for simultaneous start) */
+.cloud:nth-child(1) {
+  width: 100px;
+  height: 40px;
+  top: 20%;
+  left: 10%;
+  transform: scale(1.2);
+}
+
+.cloud:nth-child(2) {
+  width: 150px;
+  height: 60px;
+  top: 40%;
+  right: 10%;
+  transform: scale(0.9);
+}
+
+.cloud:nth-child(3) {
+  width: 120px;
+  height: 50px;
+  bottom: 30%;
+  left: 20%;
+}
+
+/* --- CLOUDS 4, 5, 6, 7 --- */
+.cloud:nth-child(4) {
+  width: 90px;
+  height: 35px;
+  top: 15%;
+  right: 5%;
+  transform: scale(0.8);
+}
+
+.cloud:nth-child(5) {
+  width: 140px;
+  height: 55px;
+  top: 60%;
+  left: 5%;
+  transform: scale(1.1);
+}
+
+.cloud:nth-child(6) {
+  width: 110px;
+  height: 45px;
+  bottom: 25%;
+  right: 15%;
+  transform: scale(0.7);
+}
+
+.cloud:nth-child(7) {
+  width: 160px;
+  height: 65px;
+  top: 50%;
+  left: 25%;
+  transform: scale(1.3);
+}
+
+@keyframes float {
+  0% {
+    /* Starts off-screen left */
+    transform: translateX(-100px);
+  }
+  100% {
+    /* Ends off-screen right, then repeats due to 'infinite' */
+    transform: translateX(calc(100vw + 100px));
+  }
+}
+
+/* Stars Background */
+.stars-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0; /* Stars are the furthest back layer */
+}
+
+.star {
+  position: absolute;
+  background-color: var(--iceberg);
+  border-radius: 50%;
+  animation: twinkle 5s infinite ease-in-out;
+  box-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Features Section */
+.features {
+  padding: 6rem 2rem;
+  background: linear-gradient(
+    to bottom,
+    var(--gunmetal),
+    var(--japanese-indigo)
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.features::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--moonstone),
+    transparent
+  );
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+  z-index: 3; /* Content must be above stars/clouds */
+}
+
+.section-title h2 {
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(to right, var(--saffron), var(--flax));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(244, 208, 63, 0.3);
+  z-index: 3;
+}
+
+.section-title p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  color: var(--iceberg);
+  z-index: 3;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 3; /* Content must be above stars/clouds */
+}
+
+.feature-card {
+  background-color: #395067;
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.4s;
+  border: 1px solid rgba(77, 182, 172, 0.1);
+  position: relative;
+  overflow: hidden;
+  z-index: 3; /* Cards must be above stars/clouds */
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, var(--moonstone), var(--saffron));
+}
+
+.feature-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(77, 182, 172, 0.2);
+}
+
+.feature-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(to bottom, var(--saffron), var(--gamboge));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 8px rgba(244, 208, 63, 0.4));
+}
+
+.feature-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+  color: var(--iceberg);
+}
+
+.feature-card p {
+  color: var(--iceberg);
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+/* Travel Recommendations */
+.recommendations {
+  padding: 6rem 2rem;
+  background: linear-gradient(
+    to bottom,
+    var(--japanese-indigo),
+    var(--gunmetal)
+  );
+  position: relative;
+  overflow: hidden; /* Added overflow hidden for starry background */
+}
+
+.recommendations::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--moonstone),
+    transparent
+  );
+}
+
+.recommendations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative; /* Added relative positioning for z-index context */
+  z-index: 3; /* Content must be above stars/clouds */
+}
+
+.destination-card {
+  background-color: #395067;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s;
+  border: 1px solid rgba(77, 182, 172, 0.1);
+  z-index: 3; /* Cards must be above stars/clouds */
+}
+
+.destination-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(77, 182, 172, 0.2);
+}
+
+.destination-image {
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.destination-image::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(to top, rgba(44, 62, 80, 0.9), transparent);
+}
+
+.destination-content {
+  padding: 1.8rem;
+}
+
+.destination-content h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  color: var(--iceberg);
+}
+
+.destination-content p {
+  color: var(--iceberg);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.weather-tag {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  background: linear-gradient(135deg, var(--gamboge), var(--saffron));
+  color: var(--gunmetal);
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(224, 159, 62, 0.3);
+}
+
+/* How It Works */
+.how-it-works {
+  padding: 6rem 2rem;
+  background: linear-gradient(
+    to bottom,
+    var(--gunmetal),
+    var(--japanese-indigo)
+  );
+  position: relative;
+  overflow: hidden; /* Added overflow hidden for starry background */
+}
+
+.how-it-works::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--moonstone),
+    transparent
+  );
+}
+
+.steps {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 3; /* Content must be above stars/clouds */
+}
+
+.steps::before {
+  content: "";
+  position: absolute;
+  top: 60px;
+  left: 10%;
+  right: 10%;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    var(--moonstone),
+    var(--saffron),
+    var(--moonstone)
+  );
+  z-index: 1;
+  border-radius: 3px;
+}
+
+.step {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  padding: 0 1.5rem;
+  z-index: 3; /* Step content must be above stars/clouds */
+}
+
+.step-number {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, var(--gamboge), var(--saffron));
+  color: var(--gunmetal);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0 auto 2rem;
+  box-shadow: 0 8px 20px rgba(224, 159, 62, 0.4),
+    inset 0 2px 5px rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+.step-number::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gamboge), var(--saffron));
+  z-index: -1;
+  opacity: 0.5;
+  filter: blur(10px);
+}
+
+.step h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.2rem;
+  color: var(--iceberg);
+}
+
+.step p {
+  color: var(--iceberg);
+  line-height: 1.7;
+}
+
+/* Footer */
+footer {
+  background-color: var(--gunmetal);
+  /* background: linear-gradient(to right, var(--gunmetal), #395067); */
+  color: var(--iceberg);
+  padding: 4rem 2rem 2rem;
+  border-top: 1px solid rgba(77, 182, 172, 0.2);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1.8rem;
+  background: linear-gradient(to right, var(--saffron), var(--flax));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.footer-section p,
+.footer-section a {
+  color: var(--iceberg);
+  margin-bottom: 1rem;
+  display: block;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section a:hover {
+  color: var(--saffron);
+}
+
+.social-links {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.social-links a {
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, var(--gunmetal), var(--japanese-indigo));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(77, 182, 172, 0.2);
+}
+
+.social-links a:hover {
+  background: linear-gradient(135deg, var(--gamboge), var(--saffron));
+  transform: translateY(-5px);
+  color: var(--gunmetal);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--iceberg);
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .steps {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .steps::before {
+    display: none;
+  }
+
+  .hero h2 {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  nav ul {
+    margin-top: 1rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero h2 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .bronze-orb {
+    display: none;
+  }
+}

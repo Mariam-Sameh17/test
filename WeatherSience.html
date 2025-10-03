@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Science | ClimaQuest</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="Styles/HomePage.css" />
+    <link rel="stylesheet" href="Styles/WeatherSience.css" />
+    <link href="Styles/nav.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style></style>
+  </head>
+  <body>
+    <!-- Header -->
+
+    <header>
+      <div class="logo">
+        <img src="pics/Logo.jpg" class="img" />
+        <h1>ClimaQuest</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="ExploreWeather.html">Plan Your Journey</a></li>
+          <li><a href="HomePage.html">Home</a></li>
+          <li><a href="TeachYourChild.html">Teach Your Child</a></li>
+          <li><a href="MyWeather.html">My Weather</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <section class="page-header">
+        <h1>The Science Behind Our Forecasts</h1>
+        <p>
+          Explore how we transform NASA data into accurate weather predictions
+          using advanced algorithms and visualization techniques
+        </p>
+      </section>
+
+      <section class="card">
+        <h2><i class="fas fa-cloud-sun"></i> Theoretical Foundation</h2>
+        <p>
+          Our weather prediction system combines historical NASA climate data
+          with machine learning algorithms to generate accurate forecasts. By
+          analyzing patterns from previous years, we can predict future weather
+          conditions with remarkable precision.
+        </p>
+
+        <div class="algorithm-flow">
+          <div class="flow-step">
+            <div class="step-icon"><i class="fas fa-satellite"></i></div>
+            <h3>Data Collection</h3>
+            <p>Gather satellite and ground station data</p>
+          </div>
+          <div class="flow-step">
+            <div class="step-icon"><i class="fas fa-database"></i></div>
+            <h3>Processing</h3>
+            <p>Clean and normalize historical data</p>
+          </div>
+          <div class="flow-step">
+            <div class="step-icon"><i class="fas fa-brain"></i></div>
+            <h3>Analysis</h3>
+            <p>Apply machine learning algorithms</p>
+          </div>
+          <div class="flow-step">
+            <div class="step-icon"><i class="fas fa-chart-line"></i></div>
+            <h3>Prediction</h3>
+            <p>Generate probability-based forecasts</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>
+          <i class="fas fa-thermometer-half"></i> Temperature Calculations
+        </h2>
+        <p>
+          Temperature predictions are generated using spatial interpolation of
+          satellite data combined with historical patterns for the same time
+          period in previous years.
+        </p>
+
+        <div class="visualization">
+          <div class="chart-container">
+            <canvas id="temperatureChart"></canvas>
+          </div>
+          <div class="explanation">
+            <h3>How Temperature Maps Are Created</h3>
+            <p>
+              Our system processes infrared data from NASA satellites to
+              calculate surface temperatures across the globe.
+            </p>
+
+            <div class="formula">
+              T_predicted = Σ(historical_T × seasonal_weight) +
+              altitude_adjustment + urban_heat_correction
+            </div>
+
+            <p>
+              The algorithm considers multiple factors including elevation,
+              proximity to water bodies, and urban development which can create
+              heat islands.
+            </p>
+
+            <div class="interactive-controls">
+              <div class="control-group">
+                <label for="timeRange"
+                  >Time Range: <span id="timeValue">7 days</span></label
+                >
+                <input
+                  type="range"
+                  id="timeRange"
+                  class="slider"
+                  min="1"
+                  max="30"
+                  value="7"
+                />
+              </div>
+              <div class="control-group">
+                <label for="regionSelect">Region:</label>
+                <select id="regionSelect" class="slider">
+                  <option value="global">Global</option>
+                  <option value="north-america">North America</option>
+                  <option value="europe">Europe</option>
+                  <option value="asia">Asia</option>
+                </select>
+              </div>
+              <button id="updateChart">Update Visualization</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-container">
+          <div class="temperature-map" id="temperatureMap">
+            <!-- Temperature map will be generated by JavaScript -->
+          </div>
+          <div class="map-legend">
+            <div class="legend-color" style="background: #1a2a6c"></div>
+            <span>-30°C</span>
+            <div
+              class="legend-color"
+              style="background: #3a7bd5; margin-left: 10px"
+            ></div>
+            <span>0°C</span>
+            <div
+              class="legend-color"
+              style="background: #a5e6ba; margin-left: 10px"
+            ></div>
+            <span>15°C</span>
+            <div
+              class="legend-color"
+              style="background: #ff9a3d; margin-left: 10px"
+            ></div>
+            <span>30°C</span>
+            <div
+              class="legend-color"
+              style="background: #ff6b6b; margin-left: 10px"
+            ></div>
+            <span>45°C</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2><i class="fas fa-cloud-rain"></i> Rainfall Prediction Models</h2>
+        <p>
+          Rainfall probability is calculated using atmospheric data including
+          humidity, pressure systems, and cloud formation patterns.
+        </p>
+
+        <div class="visualization">
+          <div class="chart-container">
+            <canvas id="rainfallChart"></canvas>
+          </div>
+          <div class="explanation">
+            <h3>Precipitation Probability</h3>
+            <p>
+              Our models analyze multiple factors to determine the likelihood of
+              rainfall:
+            </p>
+
+            <div class="formula">
+              P(rain) = f(temperature, humidity, pressure, historical_patterns,
+              cloud_cover)
+            </div>
+
+            <p>
+              The system compares current conditions with historical data from
+              the same location and time period to generate accurate probability
+              estimates.
+            </p>
+
+            <ul>
+              <li>Cloud formation analysis using satellite imagery</li>
+              <li>Atmospheric pressure gradient calculations</li>
+              <li>Humidity level tracking</li>
+              <li>Historical precipitation patterns</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2><i class="fas fa-wind"></i> Wind Pattern Analysis</h2>
+        <p>
+          Wind predictions are generated by analyzing pressure systems and their
+          movements across regions.
+        </p>
+
+        <div class="visualization">
+          <div class="chart-container">
+            <canvas id="windChart"></canvas>
+          </div>
+          <div class="explanation">
+            <h3>Understanding Wind Patterns</h3>
+            <p>
+              Wind is caused by differences in atmospheric pressure. Our system
+              tracks these pressure systems to predict wind direction and speed.
+            </p>
+
+            <div class="formula">
+              Wind Vector = Pressure Gradient × Coriolis Effect + Friction
+            </div>
+
+            <p>Key factors in wind prediction:</p>
+            <ul>
+              <li>Pressure gradient force</li>
+              <li>Coriolis effect (Earth's rotation)</li>
+              <li>Surface friction</li>
+              <li>Topographical influences</li>
+            </ul>
+
+            <div class="interactive-controls">
+              <button id="simulateWind">Simulate Wind Patterns</button>
+              <button id="resetWind">Reset Simulation</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Add this section after the Wind Pattern Analysis section -->
+      <section class="card">
+        <h2>
+          <i class="fas fa-calculator"></i> Advanced Atmospheric Equations
+        </h2>
+        <p>
+          Explore the fundamental mathematical equations that govern atmospheric
+          behavior and enable accurate weather predictions.
+        </p>
+
+        <div class="information-card">
+          <div class="information-content">
+            <h3>
+              The Momentum Equation (Navier-Stokes Equation for the atmosphere)
+            </h3>
+            <p>
+              This is essentially Newton's Second Law (F=ma) for air. It
+              describes how forces in the atmosphere create wind (acceleration).
+              The main forces are the pressure gradient, gravity, and the
+              Coriolis effect (from Earth's rotation). It predicts: Wind speed
+              and direction.
+            </p>
+            <span class="equation-tag">
+              ∂v/∂t = −(1/ρ)∇p − g*k − 2(Ω × v) + F<sub>friction</sub>
+            </span>
+          </div>
+        </div>
+
+        <!-- You can add more equation cards here -->
+        <div class="information-card">
+          <div class="information-content">
+            <h3>The Continuity Equation (Mass Conservation)</h3>
+            <p>
+              This equation ensures that mass is conserved in the atmosphere. It
+              describes how air density changes with time and how air moves from
+              areas of high pressure to low pressure.
+            </p>
+            <span class="equation-tag"> ∂ρ/∂t + ∇·(ρv) = 0 </span>
+          </div>
+        </div>
+
+        <div class="information-card">
+          <div class="information-content">
+            <h3>The Thermodynamic Energy Equation</h3>
+            <p>
+              This equation describes how temperature changes in the atmosphere
+              due to heating, cooling, and adiabatic processes. It's essential
+              for predicting temperature variations and cloud formation.
+            </p>
+            <span class="equation-tag">
+              ∂T/∂t + v·∇T = (1/ρcₚ)(∂p/∂t + v·∇p) + Q/cₚ
+            </span>
+          </div>
+        </div>
+      </section>
+      <footer>
+        <p>ClimaQuest &copy; 2023 | Using NASA Earth Observation Data</p>
+        <p>Explore more about our weather prediction models and algorithms</p>
+      </footer>
+    </div>
+
+    <script src="scripts/WeatherSience.js"></script>
+  </body>
+</html>

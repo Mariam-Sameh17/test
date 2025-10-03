@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cosmic Learning Journey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="Styles/nav.css" rel="stylesheet" />
+    <style>
+      /* CSS variables and base styles provided by the user */
+      :root {
+        --iceberg: #d8e2e9;
+        --japanese-indigo: #2c3e50;
+        --flax: #e9d985;
+        --gamboge: #e09f3e;
+        --dark-brown: #5d4037;
+        --light-blue: #90caf9;
+        --moonstone: #4db6ac;
+        --saffron: #f4d03f;
+        --gunmetal: #2c3e50;
+        --phohloay: #52779c;
+        /* Bronze colors for 3D effect */
+        --bronze-dark: #8c7853;
+        --bronze-medium: #b8945e;
+        --bronze-light: #d4af37;
+        --bronze-highlight: #f4d03f;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: var(--japanese-indigo);
+        color: var(--iceberg);
+        font-family: "Inter", sans-serif;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Sticky Header */
+      header {
+        position: sticky;
+        top: 0;
+        background: linear-gradient(to right, var(--gunmetal), #395067);
+        box-shadow: 0 0 15px rgba(244, 208, 63, 0.4);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        border-bottom: 1px solid var(--moonstone);
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        background: linear-gradient(
+          to right,
+          var(--bronze-light),
+          var(--bronze-highlight)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 0 10px rgba(244, 208, 63, 0.3);
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      nav a {
+        color: var(--iceberg);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        position: relative;
+      }
+
+      nav a:hover {
+        color: var(--gamboge);
+      }
+
+      nav a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(
+          to right,
+          var(--japanese-indigo),
+          var(--flax)
+        );
+        transition: all 0.3s;
+        transform: translateX(-50%);
+      }
+
+      nav a:hover::after {
+        width: 80%;
+      }
+
+      /* Hero Section */
+      .hero {
+        position: relative;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        text-align: center;
+        padding: 4rem 2rem;
+      }
+
+      .hero-content {
+        z-index: 2;
+        max-width: 800px;
+        padding: 3rem;
+        background: rgba(44, 62, 80, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(77, 182, 172, 0.2);
+      }
+
+      .hero h2 {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(to right, var(--saffron), var(--flax));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 0 15px rgba(244, 208, 63, 0.4);
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 2.5rem;
+        color: var(--iceberg);
+        line-height: 1.8;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--gamboge), var(--saffron));
+        color: var(--gunmetal);
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: all 0.4s;
+        box-shadow: 0 5px 15px rgba(224, 159, 62, 0.4);
+        position: relative;
+        overflow: hidden;
+        border: none;
+        cursor: pointer;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(224, 159, 62, 0.6);
+      }
+
+      .secondary-button {
+        background: transparent;
+        border: 2px solid var(--moonstone);
+        color: var(--moonstone);
+      }
+
+      .secondary-button:hover {
+        background: var(--moonstone);
+        color: var(--gunmetal);
+      }
+
+      /* Background Effects */
+      .stars-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -2;
+      }
+
+      .star {
+        position: absolute;
+        background-color: var(--iceberg);
+        border-radius: 50%;
+        animation: twinkle 5s infinite ease-in-out;
+        box-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
+      }
+
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 0.2;
+          transform: scale(0.8);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      /* Journey Path Styles */
+      .journey-path {
+        padding: 6rem 2rem;
+        max-width: 900px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      /* The connecting line */
+      .journey-path::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        width: 4px;
+        background: linear-gradient(
+          to bottom,
+          var(--moonstone),
+          var(--saffron),
+          var(--gamboge)
+        );
+        z-index: 1;
+        border-radius: 2px;
+        box-shadow: 0 0 10px rgba(77, 182, 172, 0.5);
+      }
+
+      .step {
+        position: relative;
+        z-index: 2;
+        margin-bottom: 4rem;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        display: none; /* Hidden by default */
+      }
+
+      .step.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+        display: block;
+      }
+
+      .step-container {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      /* Alternate step layouts */
+      .step:nth-child(even) .step-container {
+        flex-direction: row-reverse;
+      }
+
+      .step:nth-child(even) .step-content {
+        text-align: right;
+      }
+
+      .step-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, var(--gunmetal), #395067);
+        border: 2px solid var(--moonstone);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: var(--saffron);
+        flex-shrink: 0;
+        box-shadow: 0 0 20px rgba(77, 182, 172, 0.4);
+      }
+
+      .step-content {
+        background-color: #395067;
+        border-radius: 16px;
+        padding: 2.5rem 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(77, 182, 172, 0.1);
+        width: 100%;
+      }
+
+      .step-content.step-color-1 {
+        border-left: 5px solid var(--flax);
+      }
+      .step-content.step-color-2 {
+        border-left: 5px solid var(--light-blue);
+      }
+      .step-content.step-color-3 {
+        border-left: 5px solid var(--saffron);
+      }
+      .step-content.step-color-4 {
+        border-left: 5px solid var(--gamboge);
+      }
+
+      .step:nth-child(even) .step-content {
+        border-left: none;
+        border-right: 5px solid;
+      }
+      .step:nth-child(even) .step-content.step-color-1 {
+        border-right-color: var(--flax);
+      }
+      .step:nth-child(even) .step-content.step-color-2 {
+        border-right-color: var(--light-blue);
+      }
+      .step:nth-child(even) .step-content.step-color-3 {
+        border-right-color: var(--saffron);
+      }
+      .step:nth-child(even) .step-content.step-color-4 {
+        border-right-color: var(--gamboge);
+      }
+
+      .video-container {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background-color: #000;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+        overflow: hidden;
+      }
+
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .step h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: var(--iceberg);
+      }
+
+      .actions-container {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .summary-container {
+        margin-top: 1.5rem;
+        padding: 1.5rem;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        text-align: left;
+        font-size: 1rem;
+        line-height: 1.7;
+        border-left: 3px solid var(--moonstone);
+        min-height: 50px;
+      }
+
+      .loading-spinner {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        border: 3px solid rgba(216, 226, 233, 0.3);
+        border-radius: 50%;
+        border-top-color: var(--iceberg);
+        animation: spin 1s ease-in-out infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Modal Styles */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(5px);
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s, visibility 0.3s;
+      }
+
+      .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal-content {
+        background-color: var(--gunmetal);
+        padding: 3rem;
+        border-radius: 16px;
+        width: 90%;
+        max-width: 600px;
+        text-align: center;
+        border: 1px solid var(--moonstone);
+        box-shadow: 0 0 30px rgba(77, 182, 172, 0.3);
+        transform: scale(0.9);
+        transition: transform 0.3s;
+        position: relative;
+      }
+
+      .modal-overlay.active .modal-content {
+        transform: scale(1);
+      }
+
+      .modal-content h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: var(--saffron);
+      }
+
+      .modal-content p {
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+      }
+
+      .quiz-options button {
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border: 1px solid var(--moonstone);
+        background: transparent;
+        color: var(--iceberg);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s, transform 0.2s,
+          border-color 0.3s;
+        font-size: 1rem;
+      }
+
+      .quiz-options button:hover:not(.disabled) {
+        background-color: var(--moonstone);
+        color: var(--gunmetal);
+        transform: scale(1.02);
+      }
+
+      .quiz-options button.correct {
+        background-color: var(--moonstone);
+        color: var(--gunmetal);
+        border-color: var(--moonstone);
+      }
+
+      .quiz-options button.incorrect {
+        background-color: #c0392b;
+        color: var(--iceberg);
+        border-color: #c0392b;
+      }
+
+      .quiz-options button.disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+      .quiz-options button:hover.disabled {
+        transform: none;
+      }
+
+      #quiz-feedback {
+        margin-top: 1.5rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        height: 2rem;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 2rem;
+        color: var(--iceberg);
+        cursor: pointer;
+        background: none;
+        border: none;
+        line-height: 1;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--gunmetal);
+        color: var(--iceberg);
+        padding: 4rem 2rem 2rem;
+        border-top: 1px solid rgba(77, 182, 172, 0.2);
+        text-align: center;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          padding: 1rem;
+          gap: 1rem;
+        }
+        nav ul {
+          gap: 0.5rem;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        nav a {
+          padding: 0.5rem;
+        }
+        .hero h2 {
+          font-size: 2.5rem;
+        }
+        .hero p {
+          font-size: 1.1rem;
+        }
+        .step-container {
+          flex-direction: column !important; /* Stack on mobile */
+          align-items: flex-start;
+          gap: 1rem;
+        }
+        .journey-path::before {
+          left: 40px; /* Align line with icons center */
+          transform: translateX(-50%);
+        }
+        .step-icon {
+          margin-left: 0;
+        }
+        .step-content {
+          width: 100%;
+          text-align: left !important;
+          border-left: 5px solid !important;
+          border-right: none !important;
+        }
+        .step-content.step-color-1 {
+          border-left-color: var(--flax) !important;
+        }
+        .step-content.step-color-2 {
+          border-left-color: var(--light-blue) !important;
+        }
+        .step-content.step-color-3 {
+          border-left-color: var(--saffron) !important;
+        }
+        .step-content.step-color-4 {
+          border-left-color: var(--gamboge) !important;
+        }
+
+        /* Adjustments for the line and icon alignment on mobile */
+        .step {
+          padding-left: 100px;
+          margin-bottom: 2rem;
+        }
+        .step:nth-child(even) .step-container,
+        .step:nth-child(odd) .step-container {
+          align-items: flex-start;
+        }
+        .step-icon {
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Background for animated stars -->
+    <div class="stars-background"></div>
+
+    <!-- Header -->
+    <header>
+      <div class="logo">
+        <img src="pics/Logo.jpg" class="img" />
+        <h1>ClimaQuest</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="ExploreWeather.html">Plan Your Journey</a></li>
+          <li><a href="HomePage.html">Home</a></li>
+          <li><a href="WeatherSience.html">Weather Siencs</a></li>
+          <li><a href="MyWeather.html">My Weather</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <!-- Hero Section -->
+      <section class="hero" id="start">
+        <div class="hero-content">
+          <h2>Your Cosmic Learning Journey</h2>
+          <p>
+            Follow the path below to explore the cosmos, from our solar system
+            to the vastness of deep space. Each step brings you closer to
+            understanding the universe.
+          </p>
+          <a href="#step1" class="cta-button">Begin Exploration</a>
+        </div>
+      </section>
+
+      <!-- The Journey Path -->
+      <section class="journey-path">
+        <!-- Step 1 -->
+        <div
+          class="step"
+          id="step1"
+          data-video-topic="the scale of the universe"
+        >
+          <div class="step-container">
+            <div class="step-icon">
+              <i class="fas fa-seedling"></i>
+            </div>
+            <div class="step-content step-color-1">
+              <div class="video-container">
+                <iframe
+                  src="https://www.youtube.com/embed/libKVRa01L8"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <h3>Chapter 1: The Foundation</h3>
+              <p>
+                This is where it all begins. Watch the introductory video to
+                understand the scale of the universe. Grasping this is key to
+                the rest of the journey.
+              </p>
+              <div class="summary-container"></div>
+              <div class="actions-container">
+                <button class="cta-button ai-summary-trigger">
+                  <i class="fas fa-robot"></i> Ask AI for Summary
+                </button>
+                <button class="cta-button quiz-trigger" data-quiz-id="quiz1">
+                  Take Quiz
+                </button>
+                <button class="cta-button secondary-button pass-trigger">
+                  Pass <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div
+          class="step"
+          id="step2"
+          data-video-topic="our solar system's planets"
+        >
+          <div class="step-container">
+            <div class="step-icon">
+              <i class="fas fa-globe-americas"></i>
+            </div>
+            <div class="step-content step-color-2">
+              <div class="video-container">
+                <iframe
+                  src="https://www.youtube.com/embed/ZHAqT4hXnMw"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <h3>Chapter 2: Our Solar System</h3>
+              <p>
+                Now that you have the basics, let's explore our cosmic
+                neighborhood. This video tours the planets and other celestial
+                bodies orbiting our sun.
+              </p>
+              <div class="summary-container"></div>
+              <div class="actions-container">
+                <button class="cta-button ai-summary-trigger">
+                  <i class="fas fa-robot"></i> Ask AI for Summary
+                </button>
+                <button class="cta-button quiz-trigger" data-quiz-id="quiz2">
+                  Take Quiz
+                </button>
+                <button class="cta-button secondary-button pass-trigger">
+                  Pass <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div
+          class="step"
+          id="step3"
+          data-video-topic="deep space phenomena like nebulae, galaxies, and black holes"
+        >
+          <div class="step-container">
+            <div class="step-icon">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <div class="step-content step-color-3">
+              <div class="video-container">
+                <iframe
+                  src="https://www.youtube.com/embed/GoG_zYjpW_s"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <h3>Chapter 3: Journey to Deep Space</h3>
+              <p>
+                Here, we venture beyond our solar system to explore nebulae,
+                distant galaxies, and the mysteries of black holes. Prepare for
+                a mind-bending voyage.
+              </p>
+              <div class="summary-container"></div>
+              <div class="actions-container">
+                <button class="cta-button ai-summary-trigger">
+                  <i class="fas fa-robot"></i> Ask AI for Summary
+                </button>
+                <button class="cta-button quiz-trigger" data-quiz-id="quiz3">
+                  Take Quiz
+                </button>
+                <button class="cta-button secondary-button pass-trigger">
+                  Pass <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- End Point -->
+        <div class="step" id="end">
+          <div class="step-container">
+            <div class="step-icon">
+              <i class="fas fa-flag-checkered"></i>
+            </div>
+            <div class="step-content step-color-4">
+              <h3>Congratulations, Stargazer!</h3>
+              <p>
+                You've reached the end of this learning path. You've built a
+                strong foundation in astronomy and are now ready to explore the
+                cosmos on your own. Well done!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Cosmic Learning Journey. All rights reserved.</p>
+    </footer>
+
+    <!-- Quiz Modal -->
+    <div class="modal-overlay">
+      <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <h2 id="quiz-title">Quiz Time!</h2>
+        <p id="quiz-question">
+          This is a sample question. What is the color of the sky?
+        </p>
+        <div class="quiz-options" id="quiz-options">
+          <!-- Options will be dynamically inserted here -->
+        </div>
+        <div id="quiz-feedback"></div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // --- Starry Background Generation ---
+        const starsBackground = document.querySelector(".stars-background");
+        const numberOfStars = 150;
+
+        for (let i = 0; i < numberOfStars; i++) {
+          const star = document.createElement("div");
+          star.className = "star";
+          const size = Math.random() * 3;
+          star.style.width = `${size}px`;
+          star.style.height = `${size}px`;
+          star.style.top = `${Math.random() * 100}%`;
+          star.style.left = `${Math.random() * 100}%`;
+          star.style.animationDelay = `${Math.random() * 5}s`;
+          starsBackground.appendChild(star);
+        }
+
+        // --- Animate Steps on Scroll ---
+        const steps = document.querySelectorAll(".step");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              // We now control visibility with JS, not just IntersectionObserver
+            });
+          },
+          {
+            threshold: 0.1,
+          }
+        );
+
+        steps.forEach((step) => {
+          observer.observe(step);
+        });
+
+        // --- Initial State ---
+        const allSteps = Array.from(document.querySelectorAll(".step"));
+        allSteps.forEach((step) => step.classList.remove("is-visible")); // Hide all steps initially
+        if (allSteps.length > 0) {
+          allSteps[0].classList.add("is-visible"); // Show only the first step
+        }
+
+        // --- Function to reveal the next step ---
+        const revealNextStep = (currentStepElement) => {
+          const currentIndex = allSteps.indexOf(currentStepElement);
+          if (currentIndex < allSteps.length - 1) {
+            const nextStep = allSteps[currentIndex + 1];
+            nextStep.classList.add("is-visible");
+            setTimeout(() => {
+              nextStep.scrollIntoView({ behavior: "smooth", block: "center" });
+            }, 300); // Delay for transition
+          }
+        };
+
+        // --- Gemini API Integration ---
+        const generateSummary = async (button) => {
+          const stepElement = button.closest(".step");
+          const videoTopic = stepElement.dataset.videoTopic;
+          const summaryContainer =
+            stepElement.querySelector(".summary-container");
+
+          if (!videoTopic) return;
+
+          summaryContainer.innerHTML = '<div class="loading-spinner"></div>';
+          button.disabled = true;
+
+          const apiKey = ""; // API key will be handled by the environment
+          const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+          const systemPrompt =
+            "You are an expert science communicator. Summarize the following topic for a beginner in a concise, engaging, and easy-to-understand paragraph.";
+          const userQuery = `Summarize the key points about: ${videoTopic}.`;
+
+          const payload = {
+            contents: [{ parts: [{ text: userQuery }] }],
+            systemInstruction: {
+              parts: [{ text: systemPrompt }],
+            },
+          };
+
+          try {
+            const response = await fetch(apiUrl, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+
+            if (!response.ok) {
+              throw new Error(
+                `API request failed with status ${response.status}`
+              );
+            }
+
+            const result = await response.json();
+            const candidate = result.candidates?.[0];
+
+            if (candidate && candidate.content?.parts?.[0]?.text) {
+              summaryContainer.innerHTML = candidate.content.parts[0].text;
+            } else {
+              summaryContainer.textContent =
+                "Sorry, I couldn't generate a summary at this time.";
+            }
+          } catch (error) {
+            console.error("Error generating summary:", error);
+            summaryContainer.textContent =
+              "An error occurred. Please try again later.";
+          } finally {
+            // Keep the button disabled after one use
+          }
+        };
+
+        document.querySelectorAll(".ai-summary-trigger").forEach((button) => {
+          button.addEventListener("click", () => generateSummary(button));
+        });
+
+        // --- Quiz Data ---
+        const quizData = {
+          quiz1: {
+            title: "Quiz: The Foundation",
+            question: "What is a light-year a unit of?",
+            options: ["Time", "Speed", "Distance", "Brightness"],
+            answer: "Distance",
+          },
+          quiz2: {
+            title: "Quiz: Our Solar System",
+            question: "What is the largest planet in our Solar System?",
+            options: ["Earth", "Jupiter", "Mars", "Saturn"],
+            answer: "Jupiter",
+          },
+          quiz3: {
+            title: "Quiz: Deep Space",
+            question: "What is the name of the galaxy we live in?",
+            options: ["Andromeda", "Triangulum", "Whirlpool", "Milky Way"],
+            answer: "Milky Way",
+          },
+        };
+
+        // --- Modal and Quiz Logic ---
+        const modalOverlay = document.querySelector(".modal-overlay");
+        const modalClose = document.querySelector(".modal-close");
+        const quizTitle = document.getElementById("quiz-title");
+        const quizQuestion = document.getElementById("quiz-question");
+        const quizOptionsContainer = document.getElementById("quiz-options");
+        const quizFeedback = document.getElementById("quiz-feedback");
+
+        let currentStepForQuiz = null;
+
+        const loadQuiz = (quizId, stepElement) => {
+          currentStepForQuiz = stepElement;
+          const currentQuiz = quizData[quizId];
+          if (!currentQuiz) return;
+
+          // Reset previous state
+          quizOptionsContainer.innerHTML = "";
+          quizFeedback.textContent = "";
+          quizFeedback.style.color = "";
+
+          // Populate modal with new quiz data
+          quizTitle.textContent = currentQuiz.title;
+          quizQuestion.textContent = currentQuiz.question;
+
+          currentQuiz.options.forEach((optionText) => {
+            const button = document.createElement("button");
+            button.textContent = optionText;
+            button.addEventListener("click", () =>
+              checkAnswer(button, currentQuiz)
+            );
+            quizOptionsContainer.appendChild(button);
+          });
+        };
+
+        const checkAnswer = (selectedButton, quiz) => {
+          const isCorrect = selectedButton.textContent === quiz.answer;
+
+          const optionButtons = quizOptionsContainer.querySelectorAll("button");
+          optionButtons.forEach((btn) => {
+            btn.classList.add("disabled");
+            if (btn.textContent === quiz.answer) {
+              btn.classList.add("correct");
+            }
+          });
+
+          if (isCorrect) {
+            selectedButton.classList.add("correct");
+            quizFeedback.textContent = "Correct! Moving to the next step.";
+            quizFeedback.style.color = "var(--moonstone)";
+            setTimeout(() => {
+              closeModal();
+              revealNextStep(currentStepForQuiz);
+            }, 1500);
+          } else {
+            selectedButton.classList.add("incorrect");
+            quizFeedback.textContent =
+              "Not quite! Try again or pass to the next step.";
+            quizFeedback.style.color = "#c0392b";
+          }
+        };
+
+        document.querySelectorAll(".quiz-trigger").forEach((button) => {
+          button.addEventListener("click", () => {
+            const quizId = button.dataset.quizId;
+            const stepElement = button.closest(".step");
+            loadQuiz(quizId, stepElement);
+            modalOverlay.classList.add("active");
+          });
+        });
+
+        document.querySelectorAll(".pass-trigger").forEach((button) => {
+          button.addEventListener("click", () => {
+            const stepElement = button.closest(".step");
+            revealNextStep(stepElement);
+          });
+        });
+
+        const closeModal = () => {
+          modalOverlay.classList.remove("active");
+        };
+
+        modalClose.addEventListener("click", closeModal);
+        modalOverlay.addEventListener("click", (event) => {
+          if (event.target === modalOverlay) {
+            closeModal();
+          }
+        });
+
+        // --- Smooth Scrolling for Nav Links ---
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              // Make sure the target step is visible before scrolling
+              targetElement.classList.add("is-visible");
+              targetElement.scrollIntoView({
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

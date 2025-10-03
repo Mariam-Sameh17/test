@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plan Your Journey</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="Styles/ExploreWeather.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <a href="HomePage.html" class="home-button"
+          ><i class="fas fa-home"></i> Home</a
+        >
+        <h1>Plan Your Journey</h1>
+        <p class="subtitle">
+          Select your location on the map and get a detailed weather forecast
+        </p>
+      </header>
+
+      <div class="panel">
+        <h2>Interactive map</h2>
+        <div id="map"></div>
+        <p class="map-instructions" style="margin: 15px">
+          * Click on the map to locate your location or enter the country name *
+        </p>
+
+        <div class="location-info">
+          <h3 style="margin-bottom: 10px">Location</h3>
+
+          <select id="placeInput" required>
+            <option value="" selected disabled hidden>
+              -- Select a Destination --
+            </option>
+            <option value="Bangkok" data-lat="13.7563" data-lon="100.5018">
+              Bangkok
+            </option>
+            <option value="Barcelona" data-lat="41.3851" data-lon="2.1734">
+              Barcelona
+            </option>
+            <option value="Cairo" data-lat="30.0444" data-lon="31.2357">
+              Cairo
+            </option>
+            <option value="Dubai" data-lat="25.2048" data-lon="55.2708">
+              Dubai
+            </option>
+            <option value="Hong Kong" data-lat="22.3193" data-lon="114.1694">
+              Hong Kong
+            </option>
+            <option value="Istanbul" data-lat="41.0082" data-lon="28.9784">
+              Istanbul
+            </option>
+            <option value="London" data-lat="51.5072" data-lon="-0.1276">
+              London
+            </option>
+            <option value="Los Angeles" data-lat="34.0522" data-lon="-118.2437">
+              Los Angeles
+            </option>
+            <option value="New York" data-lat="40.7128" data-lon="-74.0060">
+              New York
+            </option>
+            <option value="Paris" data-lat="48.8566" data-lon="2.3522">
+              Paris
+            </option>
+            <option value="Rome" data-lat="41.9028" data-lon="12.4964">
+              Rome
+            </option>
+            <option value="Shanghai" data-lat="31.2304" data-lon="121.4737">
+              Shanghai
+            </option>
+            <option value="Tokyo" data-lat="35.6762" data-lon="139.6503">
+              Tokyo
+            </option>
+          </select>
+
+          <div class="coordinates">
+            <div class="coordinate-item">
+              <div class="coordinate-label">خط العرض</div>
+              <div class="coordinate-value" id="lat">--</div>
+            </div>
+            <div class="coordinate-item">
+              <div class="coordinate-label">خط الطول</div>
+              <div class="coordinate-value" id="lon">--</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="startDate">Start Date</label>
+          <input type="date" id="startDate" required />
+        </div>
+
+        <div class="form-group">
+          <label for="endDate">End Date</label>
+          <input type="date" id="endDate" required />
+        </div>
+
+        <div class="form-group">
+          <label for="Trip-type">Trip type</label>
+          <select id="type" name="Trip">
+            <option value="" selected disabled hidden>
+              -- Select a Trip --
+            </option>
+            <option value="business">Business</option>
+            <option value="vacation">Vacation</option>
+            <option value="adventure">Adventure</option>
+            <option value="relaxation">Relaxation</option>
+          </select>
+        </div>
+
+        <button id="search-button">Get forecasts</button>
+      </div>
+
+      <div class="panel result panel2">
+        <div class="loading" id="loading">
+          <div class="spinner"></div>
+          <p>Analyzing data and generating forecasts...</p>
+        </div>
+
+        <section class="results-section" id="results">
+          <h2>Results</h2>
+          <div class="weather-card">
+            <div class="condition-item">
+              <div class="condition-name">Very Hot</div>
+              <div class="probability-bar">
+                <div
+                  class="probability-fill hot"
+                  id="hot-probability"
+                  style="width: 0%"
+                ></div>
+              </div>
+              <div class="probability-text" id="hot-text">0%</div>
+            </div>
+
+            <div class="condition-item">
+              <div class="condition-name">Very cold</div>
+              <div class="probability-bar">
+                <div
+                  class="probability-fill cold"
+                  id="cold-probability"
+                  style="width: 0%"
+                ></div>
+              </div>
+              <div class="probability-text" id="cold-text">0%</div>
+            </div>
+
+            <div class="condition-item">
+              <div class="condition-name">Strong winds</div>
+              <div class="probability-bar">
+                <div
+                  class="probability-fill windy"
+                  id="windy-probability"
+                  style="width: 0%"
+                ></div>
+              </div>
+              <div class="probability-text" id="windy-text">0%</div>
+            </div>
+
+            <div class="condition-item">
+              <div class="condition-name">Severe rain</div>
+              <div class="probability-bar">
+                <div
+                  class="probability-fill wet"
+                  id="wet-probability"
+                  style="width: 0%"
+                ></div>
+              </div>
+              <div class="probability-text" id="wet-text">0%</div>
+            </div>
+          </div>
+
+          <div class="summary" id="summary">
+            The forecast summary will appear here
+          </div>
+
+          <div class="feature-card result" id="advice-prompt-card"></div>
+        </section>
+      </div>
+    </div>
+
+    <div class="advice-modal-overlay" id="advice-modal">
+      <div class="advice-modal-content">
+        <button class="modal-close-advice">&times;</button>
+        <div class="good-advice">
+          <h3><i class="fas fa-check-circle"></i> Smart Choices</h3>
+          <ul class="advice-list" id="good-advice-list"></ul>
+        </div>
+        <div class="bad-advice">
+          <h3><i class="fas fa-exclamation-triangle"></i> Things to Avoid</h3>
+          <ul class="advice-list" id="bad-advice-list"></ul>
+        </div>
+        <div class="modal-refresh-container">
+          <button id="refresh-advice-btn" class="cta-button">
+            Get Another Tip
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="scripts/ExploreWeather.js"></script>
+  </body>
+</html>
